@@ -15,4 +15,4 @@
 
 **ССылка на сайт**
 
-* [Готовый сайт можно посмотреть по ссылке:](https://ermlvv.github.io/russian-travel/)
+* [Готовый сайт можно посмотреть по ссылке:](https://ermlvv.github.io/mesto/)
