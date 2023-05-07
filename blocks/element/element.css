@@ -1,0 +1,10 @@
+.element {
+  list-style: none;
+  max-width: 282px;
+  max-height: 362px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  color: #000;
+}

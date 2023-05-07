@@ -1,0 +1,13 @@
+.element__info {
+  padding: 25px 20px 31px 21px;
+  display: flex;
+  max-height: 80px;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 0 0 10px 10px;
+  color: #000;
+  box-sizing: border-box;
+}
+
+
