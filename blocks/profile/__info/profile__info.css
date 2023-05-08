@@ -1,17 +1,17 @@
 .profile__info {
-  max-width: 336px;
   grid-column: 2;
   display: grid;
-  grid-template-columns: 2;
+  grid-template-columns: repeat(2, minmax(min-content, max-content));
   grid-template-rows: 2;
   margin-left: 30px;
   margin: 22px 0 15px 30px;
+  column-gap: 18px;
 }
 
 @media screen and (max-width: 660px) {
   .profile__info {
-    grid-row: 2;
-    column-gap: 10px;
-    margin-top: 26px;
+    column-gap: 2px;
+    margin: 26px auto 0;
+    max-width: 200px;
   }
 }
