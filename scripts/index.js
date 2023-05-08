@@ -3,16 +3,18 @@ const popupOpenBtn = document.querySelector('.profile__edit-button');
 const popupCloseBtn = document.querySelector('.popup__close-button');
 const popupSaveButton = document.querySelector('.popup__button');
 const popupToggle = (popupToToggle) => popupToToggle.classList.toggle('popup_opened');
-const formElement = document.querySelector('.popup__container');
+const formElement = document.querySelector('.popup__form');
 const profileUserName = document.querySelector('.profile__info-name');
 const profileUserAbout = document.querySelector('.profile__info-about');
-const nameInput = document.querySelector('.popup__input-name');
-const jobInput = document.querySelector('.popup__input-about');
+const nameInput = document.querySelector('.popup__input_type_name');
+const jobInput = document.querySelector('.popup__input_type_about');
 
 
-popupOpenBtn.addEventListener('click', () => popupToggle(popup),
-nameInput.value = profileUserName.textContent,
-jobInput.value = profileUserAbout.textContent);
+popupOpenBtn.addEventListener('click', () => {
+  popupToggle(popup),
+  nameInput.value = profileUserName.textContent,
+  jobInput.value = profileUserAbout.textContent
+});
 popupCloseBtn.addEventListener('click', () => popupToggle(popup));
 popupSaveButton.addEventListener('click', () => popupToggle(popup));
 

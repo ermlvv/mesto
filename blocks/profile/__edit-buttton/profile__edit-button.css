@@ -5,10 +5,14 @@
   min-height: 24px;
   grid-column: 2;
   grid-row: 1;
-  align-self: flex-end;
+  align-self: center;
   justify-self: end;
   cursor: pointer;
   transition: .2s linear;
+  background-image: url(../../../images/pen.svg);
+  background-repeat: no-repeat;
+  background-position: center;
+  padding: 0;
 }
 
 .profile__edit-button:hover {
@@ -24,5 +28,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    background-size: 7.5px 7.5px;
   }
 }

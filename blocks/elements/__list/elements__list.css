@@ -7,3 +7,9 @@
   gap: 20px 17px;
   justify-content: center;
 }
+
+@media screen and (max-width: 320px) {
+  .elements__list {
+    row-gap: 22px;
+  }
+}

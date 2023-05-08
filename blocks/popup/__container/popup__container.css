@@ -1,7 +1,6 @@
 .popup__container {
   position: relative;
   min-width: 430px;
-  min-height: 330px;
   background-color: #fff;
   color: #000;
   display: flex;
@@ -17,6 +16,5 @@
   .popup__container {
     max-width: 430px;
     min-width: 282px;
-    min-height: 322px;
   }
 }
