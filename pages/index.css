@@ -26,6 +26,8 @@
 @import url(../blocks/element/__info/element__info.css);
 @import url(../blocks/element/__heading/element__heading.css);
 @import url(../blocks/element/__like/element__like.css);
+@import url(../blocks/element/__like/_active/element__like_active.css);
+@import url(../blocks/element/__remove/element__remove.css);
 /* Конец elements */
 
 /* Начало footer */
