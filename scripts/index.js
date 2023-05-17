@@ -1,13 +1,12 @@
 const popup = document.querySelectorAll('.popup');
-// const avatarPopup = document.querySelector('.')
 const editPopup = document.querySelector('.popup_type_edit');
 const addPopup = document.querySelector('.popup_type_add');
+const imagePopup = document.querySelector('.popup_type_image');
 const editPopupOpenBtn = document.querySelector('.profile__edit-button');
 const addPopupOpenBtn = document.querySelector('.profile__add-button');
 const popupCloseBtn = document.querySelectorAll('.popup__close-button');
 const popupOpen = (popupToOpen) => popupToOpen.classList.add('popup_opened');
 const popupClose = (popupToClose) => popupToClose.classList.remove('popup_opened');
-// const popupToggle = (popupToToggle) => popupToToggle.classList.toggle('popup_opened');
 const formElementEdit = document.querySelector('.popup__form_type_edit');
 const formElementAdd = document.querySelector('.popup__form_type_add');
 const profileUserName = document.querySelector('.profile__info-name');
@@ -18,20 +17,26 @@ const popupsCloseBtn = Array.from(popupCloseBtn);
 const popups = Array.from(popup);
 const placeInput = document.querySelector('.popup__input_type_place');
 const imageUrlInput = document.querySelector('.popup__input_type_image');
+const cardsSection = document.querySelector('.elements__list');
+const cardTemplete = document.querySelector('.element_template').content;
+const popupImage = document.querySelector('.popup__image')
+const popupImageTitle = document.querySelector('.popup__image-title')
 
 editPopupOpenBtn.addEventListener('click', () => {
   popupOpen(editPopup),
-  nameInput.value = profileUserName.textContent,
-  jobInput.value = profileUserAbout.textContent
+  nameInput.value = profileUserName.textContent;
+  jobInput.value = profileUserAbout.textContent;
 });
 
 addPopupOpenBtn.addEventListener('click', () => popupOpen(addPopup));
 popupsCloseBtn.forEach((item) => item.addEventListener('click', () => popups.forEach((item) => popupClose(item))));
 
+
+
 popups.forEach((item) => {
   item.addEventListener('click', (evt) => {
     if (evt.target == evt.currentTarget) {
-      popupClose(item)
+      popupClose(item);
     }
   });
 })
@@ -72,8 +77,6 @@ const initialCards = [
   }
 ];
 
-const cardsSection = document.querySelector('.elements__list');
-const cardTemplete = document.querySelector('.element_template').content;
 const createCard = (name, link) => {
     const cardContainer = cardTemplete.cloneNode(true);
 
@@ -81,26 +84,34 @@ const createCard = (name, link) => {
     cardContainer.querySelector('.element__image').alt = name;
     cardContainer.querySelector('.element__heading').textContent = name;
     cardContainer.querySelector('.element__remove').addEventListener('click', removeCard);
-    cardContainer.querySelector('.element__like').addEventListener('click', likeCard)
+    cardContainer.querySelector('.element__like').addEventListener('click', likeCard);
+    cardContainer.querySelector('.element__image').addEventListener('click', renderImagePopup)
+
     return cardContainer;
 }
 
+const renderImagePopup = (evt) => {
+  popupImage.src = evt.target.closest('.element__image').src
+  popupImage.alt = evt.target.closest('.element').textContent
+  popupImageTitle.textContent = evt.target.closest('.element').textContent 
+  popupOpen(imagePopup)
+};
+
 const addCard = (item) => {
   cardsSection.prepend(item);
-}
+};
 
 const removeCard = (evt) => {
   const item = evt.target.closest('.element');
   item.remove();
-}
+};
 
 const likeCard = (evt) => {
-  console.log('click')
   const item = evt.target.closest('.element__like');
   item.classList.toggle('element__like_active')
-}
+};
 
-initialCards.map((item) => createCard(item.name, item.link)).forEach(addCard)
+initialCards.map((item) => createCard(item.name, item.link)).forEach(addCard);
 
 const handleFormSubmitAdd = (evt) => {
   evt.preventDefault();
@@ -109,13 +120,6 @@ const handleFormSubmitAdd = (evt) => {
   popupClose(addPopup);
   placeInput.value = '';
   imageUrlInput.value = '';
-}
+};
 
 formElementAdd.addEventListener('submit', handleFormSubmitAdd);
-
-
-
-
-
-
-
