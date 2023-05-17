@@ -1,5 +1,5 @@
 import { initialCards } from './constans.js';
-console.log(initialCards)
+
 const popups = document.querySelectorAll('.popup');
 const popupEditProfile = document.querySelector('.popup_type_edit');
 const popupAddCard = document.querySelector('.popup_type_add');
