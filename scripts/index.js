@@ -94,6 +94,7 @@ const renderImagePopup = (evt) => {
   popupImage.src = evt.target.closest('.element__image').src
   popupImage.alt = evt.target.closest('.element').textContent
   popupImageTitle.textContent = evt.target.closest('.element').textContent 
+  console.log('click')
   popupOpen(imagePopup)
 };
 
