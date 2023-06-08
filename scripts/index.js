@@ -7,8 +7,6 @@ const imagePopup = document.querySelector('.popup_type_image');
 const editPopupOpenBtn = document.querySelector('.profile__edit-button');
 const addPopupOpenBtn = document.querySelector('.profile__add-button');
 const popupCloseBtn = document.querySelectorAll('.popup__close-button');
-const openPopup = (popupToOpen) => popupToOpen.classList.add('popup_opened');
-const closePopup = (popupToClose) => popupToClose.classList.remove('popup_opened');
 const formElementEdit = document.querySelector('.popup__form_type_edit');
 const formElementAdd = document.querySelector('.popup__form_type_add');
 const profileUserName = document.querySelector('.profile__info-name');
@@ -24,19 +22,47 @@ const cardTemplete = document.querySelector('.element_template').content;
 const popupImage = document.querySelector('.popup__image')
 const popupImageTitle = document.querySelector('.popup__image-title')
 
+const openPopup = (popupToOpen) => {
+  popupToOpen.classList.add('popup_opened');
+  document.addEventListener('keydown', popupCloseEsc)
+}
+const closePopup = (popupToClose) => {
+  popupToClose.classList.remove('popup_opened');
+  document.removeEventListener('keydown', popupCloseEsc)
+}
+ 
+const popupCloseEsc = (evt) => {
+  if (evt.key === 'Escape') {
+    popupsArr.forEach((item) => {
+      closePopup(item)
+      placeInput.value = '';
+      imageUrlInput.value = '';
+    })
+  }
+}
 editPopupOpenBtn.addEventListener('click', () => {
   openPopup(popupEditProfile),
   nameInput.value = profileUserName.textContent;
   jobInput.value = profileUserAbout.textContent;
+  formCheckState(validationConfig, formElementEdit);
 });
 
-addPopupOpenBtn.addEventListener('click', () => openPopup(popupAddCard));
-popupsCloseBtn.forEach((item) => item.addEventListener('click', () => popupsArr.forEach((item) => closePopup(item))));
+addPopupOpenBtn.addEventListener('click', () => {
+  openPopup(popupAddCard);
+  formSubmitButtonCheckState(validationConfig, formElementAdd);
+});
+popupsCloseBtn.forEach((item) => item.addEventListener('click', () => popupsArr.forEach((item) => {
+  closePopup(item);
+  placeInput.value = '';
+  imageUrlInput.value = '';
+})));
 
 popupsArr.forEach((item) => {
   item.addEventListener('click', (evt) => {
     if (evt.target === evt.currentTarget) {
       closePopup(item);
+      placeInput.value = '';
+      imageUrlInput.value = '';
     }
   });
 });
@@ -97,3 +123,5 @@ const handleFormSubmitAdd = (evt) => {
 };
 
 formElementAdd.addEventListener('submit', handleFormSubmitAdd);
+
+enableValidation(validationConfig);
