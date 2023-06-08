@@ -11,17 +11,17 @@ const validationConfig = {
 const showError = (validationConfig, inputElement) => {
   const errorElement = document.querySelector(`#${inputElement.id}-error`);
 
-  errorElement.classList.add(validationConfig.errorClass)
+  errorElement.classList.add(validationConfig.errorClass);
   errorElement.textContent = inputElement.validationMessage;
-  inputElement.classList.add(validationConfig.inputErrorClass)
+  inputElement.classList.add(validationConfig.inputErrorClass);
 }
 
 const hideError = (validationConfig, inputElement) => {
   const errorElement = document.querySelector(`#${inputElement.id}-error`);
   
   errorElement.textContent = '';
-  errorElement.classList.remove(validationConfig.errorClass)
-  inputElement.classList.remove(validationConfig.inputErrorClass)
+  errorElement.classList.remove(validationConfig.errorClass);
+  inputElement.classList.remove(validationConfig.inputErrorClass);
   
 }
 
@@ -30,11 +30,11 @@ const validateInput = (validationConfig, inputElement) => {
     showError(validationConfig, inputElement);
   } else {
     hideError(validationConfig, inputElement);
-  }
-}
+  };
+};
 
 const formSubmitButtonChangeState = (validationConfig, formElement) => {
-  const button = formElement.querySelector(validationConfig.submitButtonSelector)
+  const button = formElement.querySelector(validationConfig.submitButtonSelector);
 
   if (!formElement.checkValidity()) {
     button.setAttribute('disabled', true);
@@ -49,18 +49,16 @@ const formCheckState = (validationConfig, formElement) => {
   const inputList = Array.from(formElement.querySelectorAll(validationConfig.inputElement));
   inputList.forEach((inputElement) => {
     validateInput(validationConfig, inputElement);
-    console.log('checked')
   });
-}
+};
 
   const formSubmitButtonCheckState = (validationConfig, formElement) => {
     const inputList = Array.from(formElement.querySelectorAll(validationConfig.inputElement));
     inputList.forEach((inputElement) => {
       hideError(validationConfig, inputElement)
-      
     });
     formSubmitButtonChangeState(validationConfig, formElement);
-}
+};
 
 const setEventListeners = (validationConfig, formElement) => {
   const inputList = Array.from(document.querySelectorAll(validationConfig.inputElement));
@@ -83,4 +81,3 @@ const enableValidation = (validationConfig) => {
     setEventListeners(validationConfig, formElement);
   });
 };
-
