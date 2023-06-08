@@ -37,9 +37,9 @@
         <button type="button" class="popup__close-button"></button>
         <h2 class="popup__heading">Редактировать профиль</h2>
         <form name="profile-form" class="popup__form popup__form_type_edit">
-          <input id="user-name" type="text" name="userName" class="popup__input popup__input_type_name" placeholder="ФИО" minlength="2" maxlength="12" required>
+          <input id="user-name" type="text" name="userName" class="popup__input popup__input_type_name" placeholder="ФИО" minlength="2" maxlength="40" required>
           <span id="user-name-error" class="popup__error"></span>
-          <input id="user-about" type="text" name="userAbout" class="popup__input popup__input_type_about" placeholder="О себе" minlength="2" maxlength="30" required>
+          <input id="user-about" type="text" name="userAbout" class="popup__input popup__input_type_about" placeholder="О себе" minlength="2" maxlength="200" required>
           <span id="user-about-error" class="popup__error">.</span>
           <button class="popup__button popup__button_type_edit" type="submit">Сохранить</button>
         </form>
@@ -50,7 +50,7 @@
         <button type="button" class="popup__close-button"></button>
         <h2 class="popup__heading">Новое место</h2>
         <form name="add-form" class="popup__form popup__form_type_add">
-          <input id="place-name" type="text" name="placeName" class="popup__input popup__input_type_place" placeholder="Название" minlength="2" maxlength="12" required>
+          <input id="place-name" type="text" name="placeName" class="popup__input popup__input_type_place" placeholder="Название" minlength="2" maxlength="30" required>
           <span id="place-name-error" class="popup__error"></span>
           <input id="place-link" type="url" name="imageUrl" class="popup__input popup__input_type_image"
             placeholder="Ссылка на картинку" required>
