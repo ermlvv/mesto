@@ -45,19 +45,19 @@ const formSubmitButtonChangeState = (validationConfig, formElement) => {
   };
 };
 
+const formSubmitButtonCheckState = (validationConfig, formElement) => {
+  const inputList = Array.from(formElement.querySelectorAll(validationConfig.inputElement));
+  inputList.forEach((inputElement) => {
+    hideError(validationConfig, inputElement)
+  });
+  formSubmitButtonChangeState(validationConfig, formElement);
+};
+
 const formCheckState = (validationConfig, formElement) => {
   const inputList = Array.from(formElement.querySelectorAll(validationConfig.inputElement));
   inputList.forEach((inputElement) => {
     validateInput(validationConfig, inputElement);
   });
-};
-
-  const formSubmitButtonCheckState = (validationConfig, formElement) => {
-    const inputList = Array.from(formElement.querySelectorAll(validationConfig.inputElement));
-    inputList.forEach((inputElement) => {
-      hideError(validationConfig, inputElement)
-    });
-    formSubmitButtonChangeState(validationConfig, formElement);
 };
 
 const setEventListeners = (validationConfig, formElement) => {
