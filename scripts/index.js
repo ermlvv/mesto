@@ -17,34 +17,34 @@ const placeInput = document.querySelector('.popup__input_type_place');
 const imageUrlInput = document.querySelector('.popup__input_type_image');
 const cardsSection = document.querySelector('.elements__list');
 const cardTemplate = document.querySelector('.element_template').content;
-const popupImage = document.querySelector('.popup__image')
-const popupImageTitle = document.querySelector('.popup__image-title')
+const popupImage = document.querySelector('.popup__image');
+const popupImageTitle = document.querySelector('.popup__image-title');
 
 const openPopup = (popupToOpen) => {
   popupToOpen.classList.add('popup_opened');
-  document.addEventListener('keydown', closePopupByEsc)
-  document.addEventListener('click', closePopupByButton)
+  document.addEventListener('keydown', closePopupByEsc);
+  document.addEventListener('click', closePopupByButton);
 }
 const closePopup = (popupToClose) => {
   popupToClose.classList.remove('popup_opened');
-  document.removeEventListener('keydown', closePopupByEsc)
-  document.addEventListener('click', closePopupByButton)
+  document.removeEventListener('keydown', closePopupByEsc);
+  document.addEventListener('click', closePopupByButton);
 }
- 
+
 const closePopupByEsc = (evt) => {
   if (evt.key === 'Escape') {
-    const popup = evt.currentTarget.querySelector('.popup_opened');
-      closePopup(popup)
+    const popup = document.querySelector('.popup_opened');
+      closePopup(popup);
   }
 }
 
-const closePopupByButton = () => {
-  popupsCloseBtn.forEach((item) => item.addEventListener('click', () => popupsArr.forEach((item) => {
-    if (item.classList.contains('popup_opened')) {
-      closePopup(item);
-    }
-  })));
-}
+const closePopupByButton = (evt) => {
+  const popup = document.querySelector('.popup_opened');
+  const popupCloseButton = popup.querySelector('.popup__close-button');
+  if (evt.target === popupCloseButton) {
+    closePopup(popup);
+  };
+};
 
 popupProfileOpenButton.addEventListener('click', () => {
   openPopup(popupEditProfile),
@@ -77,7 +77,6 @@ const handleFormSubmitEdit = (evt) => {
 
 formElementEdit.addEventListener('submit', handleFormSubmitEdit);
 
-
 const createCard = (name, link) => {
   const cardContainer = cardTemplate.cloneNode(true);
   const cardImage = cardContainer.querySelector('.element__image');
@@ -87,7 +86,7 @@ const createCard = (name, link) => {
   cardContainer.querySelector('.element__heading').textContent = name;
   cardContainer.querySelector('.element__remove').addEventListener('click',removeCard);
   cardContainer.querySelector('.element__like').addEventListener('click', likeCard);
-  cardContainer.querySelector('.element__image').addEventListener('click',renderImagePopup)
+  cardContainer.querySelector('.element__image').addEventListener('click',renderImagePopup);
 
   return cardContainer;
 };
@@ -110,7 +109,7 @@ const removeCard = (evt) => {
 
 const likeCard = (evt) => {
   const item = evt.target.closest('.element__like');
-  item.classList.toggle('element__like_active')
+  item.classList.toggle('element__like_active');
 };
 
 initialCards.map((item) => createCard(item.name, item.link)).forEach(addCard);
