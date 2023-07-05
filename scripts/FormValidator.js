@@ -26,31 +26,27 @@ export default class FormValidator {
   }
 
   _validateInput(inputElement) {
-    if(!this._inputElement.validity.valid) {
+    if(!inputElement.validity.valid) {
       this._showError(inputElement)
-      console.log(inputElement)
     } else {
       this._hideError(inputElement)
     }
   }
-  
+
+  _checkForInvalidInput(inputList) {
+    return inputList.some((inputElement) => {
+      return !inputElement.validity.valid
+    })
+  }
+
   disableSubmitButton() {
-    this.submitButtonSelector .setAttribute('disabled', true);
-    this.submitButtonSelector .classList.add(this._inactiveButtonClass);
+    this.submitButtonSelector.setAttribute('disabled', true);
+    this.submitButtonSelector.classList.add(this._inactiveButtonClass);
   }
 
   _enableSubmitButton() {
-    this.submitButtonSelector .removeAttribute('disabled');
-    this.submitButtonSelector .classList.remove(this._inactiveButtonClass);
-  }
-
-
-  _formSubmitButtonChangeState() {
-    if (!this._inputElement.validity.valid) {
-      this.disableSubmitButton();
-        } else {
-          this._enableSubmitButton();
-        };
+    this.submitButtonSelector.removeAttribute('disabled');
+    this.submitButtonSelector.classList.remove(this._inactiveButtonClass);
   }
   
   _setEventListeners() {
@@ -59,7 +55,11 @@ export default class FormValidator {
     inputList.forEach((inputElement) => {
       inputElement.addEventListener("input", () => {
         this._validateInput(inputElement);
-        this._formSubmitButtonChangeState();
+        if(this._checkForInvalidInput(inputList)) {
+          this.disableSubmitButton();
+        } else {
+          this._enableSubmitButton();
+        }
       })
     })
   };
@@ -71,7 +71,6 @@ export default class FormValidator {
     inputList.forEach((inputElement) => {
       this._hideError(inputElement);
     })
-    _formSubmitButtonChangeState();
   }
   
   enableValidation() {

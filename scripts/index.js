@@ -1,5 +1,5 @@
 import { initialCards } from "./constants.js";
-import Card from "./Card.js";
+import Card from "./card.js";
 import FormValidator from "./FormValidator.js" 
 
 const popups = document.querySelectorAll('.popup');
@@ -65,8 +65,8 @@ popupAddOpenButton.addEventListener('click', () => {
   placeInput.value = '';
   imageUrlInput.value = '';
   openPopup(popupAddCard);
-  addFormValidator.disableSubmitButton();
   addFormValidator.resetFormState();
+  addFormValidator.disableSubmitButton();
 });
 
 popupsArr.forEach((item) => {
