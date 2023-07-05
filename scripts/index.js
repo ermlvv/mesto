@@ -1,5 +1,5 @@
 import { initialCards } from "./constants.js";
-import Card from "./card.js";
+import Card from "./Card.js";
 import FormValidator from "./FormValidator.js" 
 
 const popups = document.querySelectorAll('.popup');
