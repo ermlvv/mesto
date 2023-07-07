@@ -30,7 +30,7 @@ export default class Card {
     }
 
     _likeCard() {
-      this._buttonLike .classList.toggle('element__like_active');
+      this._buttonLike.classList.toggle('element__like_active');
     }
 
     _deleteCard() {
