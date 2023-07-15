@@ -53,15 +53,21 @@ popupProfileOpenButton.addEventListener('click', () => {
 });
 editPopupForm.setEventListeners()
 
+const createCard = (data, selector, submitHandler) => {
+  const card = new Card(data, '.element_template', submitHandler);
+  const cardElement = card.generateCard();
+
+  return cardElement
+}
 const addPopupForm = new PopupWithForm('.popup_type_add', (data) => {
     const newCardData =
     {
       name: data.placeName,
       link: data.imageUrl
     };
-  const newCard = new Card(newCardData, '.element_template', handleCardClick);
-  const newCardElement = newCard.generateCard();
-  cardsList.addItem(newCardElement);
+  const cardElement = createCard(newCardData, '.element_template', handleCardClick);
+  
+  cardsList.addItem(cardElement);
 })
 
 popupAddOpenButton.addEventListener('click', () => {
@@ -76,8 +82,8 @@ addPopupForm.setEventListeners()
 const cardsList = new Section({
   items: initialCards,
   renderer: (item) => {
-    const card = new Card(item, '.element_template', handleCardClick);
-    const cardElement = card.generateCard();
+    const cardElement = createCard(item, '.element_template', handleCardClick);
+    
     cardsList.addItem(cardElement);
   }
 }, '.elements__list')
