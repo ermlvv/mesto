@@ -1,14 +1,15 @@
+import './index.css';
 import { 
   initialCards,
   validationConfig,
-} from "./constants.js";
-import Section from "./Section.js";
-import Card from "./Card.js";
-import FormValidator from "./FormValidator.js" 
-import Popup from "./Popup.js"
-import PopupWithImage from "./PopupWithImage.js";
-import UserInfo from "./UserInfo.js"
-import PopupWithForm from "./PopupWithForm.js";
+} from "../util/constants.js";
+import Section from "../components/Section.js";
+import Card from "../components/Card.js";
+import FormValidator from "../components/FormValidator.js" 
+import Popup from "../components/Popup.js"
+import PopupWithImage from "../components/PopupWithImage.js";
+import UserInfo from "../components/UserInfo.js"
+import PopupWithForm from "../components/PopupWithForm.js";
 
 const popupEditProfile = document.querySelector('.popup_type_edit');
 const popupAddCard = document.querySelector('.popup_type_add');
