@@ -24,12 +24,12 @@ const profileInfo = new UserInfo({
 });
 
 
-const imgPopup = new Popup('.popup_type_image');
-imgPopup.setEventListeners();
+
 const imgPopupRender = new PopupWithImage('.popup_type_image');
 const handleCardClick = (link, name) => {
   imgPopupRender.open(link, name)
 }
+imgPopupRender.setEventListeners();
 
 const editFormValidator = new FormValidator(validationConfig, popupEditProfile);
 editFormValidator.enableValidation();
