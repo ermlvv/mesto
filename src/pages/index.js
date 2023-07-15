@@ -2,6 +2,7 @@ import './index.css';
 import { 
   initialCards,
   validationConfig,
+  formInputs
 } from "../util/constants.js";
 import Section from "../components/Section.js";
 import Card from "../components/Card.js";
@@ -16,13 +17,13 @@ const popupAddCard = document.querySelector('.popup_type_add');
 const popupProfileOpenButton = document.querySelector('.profile__edit-button');
 const popupAddOpenButton = document.querySelector('.profile__add-button'); 
 
+
 const profileInfo = new UserInfo({ 
   name: '.profile__info-name',
   about: '.profile__info-about'
 });
 
-const editPopup = new Popup('.popup_type_edit');
-const addPopup = new Popup('.popup_type_add');
+
 const imgPopup = new Popup('.popup_type_image');
 imgPopup.setEventListeners();
 const imgPopupRender = new PopupWithImage('.popup_type_image');
@@ -40,17 +41,17 @@ const editPopupForm = new PopupWithForm('.popup_type_edit', (data) => {
   profileInfo.setUserInfo({ 
     name: data.userName, 
     about: data.userAbout})
+    editPopupForm.close()
 })
 
 popupProfileOpenButton.addEventListener('click', () => {
-  editPopup.open()
-  profileInfo.getUserInfo({ 
-    name: '.popup__input_type_name',
-    about: '.popup__input_type_about' 
-  });
-  editPopup.setEventListeners();
+  editPopupForm.open()
+  const profileData = profileInfo.getUserInfo();
+  formInputs.nameInput.value = profileData.name;
+  formInputs.aboutInput.value = profileData.about;
   editFormValidator.resetFormState();
 });
+
 editPopupForm.setEventListeners()
 
 const createCard = (data, selector, submitHandler) => {
@@ -67,25 +68,24 @@ const addPopupForm = new PopupWithForm('.popup_type_add', (data) => {
     };
   const cardElement = createCard(newCardData, '.element_template', handleCardClick);
   
-  cardsList.addItem(cardElement);
+  cardsSection.addItem(cardElement);
+  addPopupForm.close()
 })
 
 popupAddOpenButton.addEventListener('click', () => {
-  addPopup.open();
-  addPopup.setEventListeners();
+  addPopupForm.open();
   addFormValidator.resetFormState();
   addFormValidator.disableSubmitButton();
 });
 
-addPopupForm.setEventListeners()
+addPopupForm.setEventListeners();
 
-const cardsList = new Section({
-  items: initialCards,
+const cardsSection = new Section({
   renderer: (item) => {
     const cardElement = createCard(item, '.element_template', handleCardClick);
     
-    cardsList.addItem(cardElement);
+    cardsSection.addItem(cardElement);
   }
 }, '.elements__list')
 
-cardsList.renderItems()
+cardsSection.renderItems(initialCards)

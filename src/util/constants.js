@@ -33,3 +33,8 @@ export const validationConfig = {
   inputErrorClass: 'popup__input_type_error',
   errorClass: 'popup__error_visible'
 }
+
+export const formInputs = {
+  nameInput: document.querySelector('.popup__input_type_name'),
+  aboutInput: document.querySelector('.popup__input_type_about')
+}
