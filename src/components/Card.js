@@ -1,5 +1,4 @@
 export default class Card {
-  
   static removeCard(card) {
     card.remove();
     card = null;

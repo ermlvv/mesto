@@ -47,7 +47,7 @@ avatarFormValidator.enableValidation();
 const avatarUpdatePopup = new PopupWithForm(
   ".popup_type_update-avatar",
   (data) => {
-    avatarUpdatePopup.renderPreloader('Сохранение...');
+    avatarUpdatePopup.renderPreloader("Сохранение...");
     api
       .setUserAvatar(data)
       .then(() => {
@@ -57,7 +57,7 @@ const avatarUpdatePopup = new PopupWithForm(
       .catch((err) => {
         console.error(`Возникла ошибка при обновлении аватара: ${err}`);
       })
-      .finally(() => avatarUpdatePopup.renderPreloader('Сохранить'));
+      .finally(() => avatarUpdatePopup.renderPreloader("Сохранить"));
   }
 );
 
@@ -71,7 +71,7 @@ const cardPopupRemove = new PopupWithConfirmation(
     api
       .removeCard(cardId)
       .then(() => {
-        Card.removeCard(cardElement)
+        Card.removeCard(cardElement);
       })
       .then(() => cardPopupRemove.close())
       .catch((err) =>
