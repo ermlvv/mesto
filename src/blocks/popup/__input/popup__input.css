@@ -8,7 +8,9 @@
   padding: 0 0 10px 0;
   margin-bottom: 5px;
 }
-
+.popup__input:first-child {
+  margin-top: 33px;
+}
 @media screen and (max-width: 530px) {
   .popup__input {
     width: 238px;

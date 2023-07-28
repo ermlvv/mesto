@@ -17,6 +17,15 @@ constructor(popupSelector) {
     document.removeEventListener('keydown', this._handleEscClose);
   }
  
+  renderPreloader(booleanValue, message) {
+    if(booleanValue) {
+      this._form.querySelector('.popup__button').textContent = message
+    } else { 
+      this._form.querySelector('.popup__button').
+    textContent = message
+  }
+  }
+
   _handleEscClose(evt) {
     if (evt.key === 'Escape') {
       this.close();

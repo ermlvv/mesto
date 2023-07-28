@@ -36,5 +36,11 @@ export const validationConfig = {
 
 export const formInputs = {
   nameInput: document.querySelector('.popup__input_type_name'),
-  aboutInput: document.querySelector('.popup__input_type_about')
+  aboutInput: document.querySelector('.popup__input_type_about'),
+  avatarInput: document.querySelector('.popup__input_type_avatar')
+}
+
+export const apiConfig = {
+  url:"https://mesto.nomoreparties.co/v1/cohort-71",
+  token: "819a001d-5b0e-4a83-a5db-fddf974e88e5"
 }
