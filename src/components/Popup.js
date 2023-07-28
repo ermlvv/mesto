@@ -1,44 +1,36 @@
 export default class Popup {
-constructor(popupSelector) {
-    this._popupSelector = document.querySelector(popupSelector);
-    this._closeButton = this._popupSelector.querySelector('.popup__close-button');
-    this._closeButton = this._popupSelector.querySelector('.popup__close-button');
+  constructor(popupSelector) {
+    this._popup = document.querySelector(popupSelector);
     this._handleEscClose = this._handleEscClose.bind(this);
-    this._handleOverlayClose = this._handleOverlayClose.bind(this)
+    this._handleOverlayClose = this._handleOverlayClose.bind(this);
   }
 
   open() {
-    this._popupSelector.classList.add('popup_opened');
-    document.addEventListener('keydown', this._handleEscClose);
+    this._popup.classList.add("popup_opened");
+    document.addEventListener("keydown", this._handleEscClose);
   }
 
   close() {
-    this._popupSelector.classList.remove('popup_opened');
-    document.removeEventListener('keydown', this._handleEscClose);
-  }
- 
-  renderPreloader(booleanValue, message) {
-    if(booleanValue) {
-      this._form.querySelector('.popup__button').textContent = message
-    } else { 
-      this._form.querySelector('.popup__button').
-    textContent = message
-  }
+    this._popup.classList.remove("popup_opened");
+    document.removeEventListener("keydown", this._handleEscClose);
   }
 
   _handleEscClose(evt) {
-    if (evt.key === 'Escape') {
+    if (evt.key === "Escape") {
       this.close();
     }
   }
 
   _handleOverlayClose(evt) {
-    if (evt.target === evt.currentTarget || evt.target.classList.contains('popup__close-button')) {
+    if (
+      evt.target === evt.currentTarget ||
+      evt.target.classList.contains("popup__close-button")
+    ) {
       this.close();
-       }
+    }
   }
 
   setEventListeners() {
-    this._popupSelector.addEventListener('mousedown', this._handleOverlayClose);
+    this._popup.addEventListener("mousedown", this._handleOverlayClose);
   }
 }
