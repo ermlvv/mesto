@@ -66,12 +66,12 @@ avatarUpdatePopup.setEventListeners();
 //Попап удаления карточки
 const cardPopupRemove = new PopupWithConfirmation(
   ".popup_type_remove-card",
-  (cardId, cardElement) => {
+  (card) => {
     cardPopupRemove.renderPreloader("Удаление...");
     api
-      .removeCard(cardId)
+      .removeCard(card.getId())
       .then(() => {
-        Card.removeCard(cardElement);
+        card.removeCard()
       })
       .then(() => cardPopupRemove.close())
       .catch((err) =>
@@ -97,8 +97,8 @@ const editPopupForm = new PopupWithForm(".popup_type_edit", (data) => {
         name: data.name,
         about: data.about,
       });
+      editPopupForm.close();
     })
-    .then(() => editPopupForm.close())
     .finally(() => editPopupForm.renderPreloader("Сохранить"));
 });
 

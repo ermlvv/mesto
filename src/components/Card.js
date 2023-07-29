@@ -1,8 +1,4 @@
-export default class Card {
-  static removeCard(card) {
-    card.remove();
-    card = null;
-  }
+export default class Card { 
   constructor({
     data,
     currentId,
@@ -63,6 +59,11 @@ export default class Card {
     return this._cardId;
   }
 
+  removeCard() {
+    this._element.remove();
+    this._element = null;
+  }
+
   _checkLikeButtonState() {
     this._likes.forEach((like) => {
       if (like._id === this._currentUserId) {
@@ -71,8 +72,8 @@ export default class Card {
     });
   }
 
-  updateLike(card) {
-    this._likeCounter.textContent = card.length;
+  updateLike(likes) {
+    this._likeCounter.textContent = likes.length;
     this._buttonLike.classList.toggle("element__like_active");
   }
 
@@ -94,7 +95,7 @@ export default class Card {
     });
 
     this._buttonRemove.addEventListener("click", () => {
-      this._handleCardRemove(this._cardId, this._element);
+      this._handleCardRemove(this);
     });
 
     this._elementImage.addEventListener("click", () => {
