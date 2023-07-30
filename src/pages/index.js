@@ -127,7 +127,8 @@ const createCard = (cardData) => {
     template: ".element_template",
     currentId,
     handleCardClick: () => imagePopup.open(cardData),
-    handleCardRemove: cardPopupRemove.open.bind(cardPopupRemove),
+    // handleCardRemove: cardPopupRemove.open.bind(cardPopupRemove),
+    handleCardRemove: (card) => cardPopupRemove.open(card),
     handleCardLike: (card) => {
       api
         .likeCard(card.getId())
